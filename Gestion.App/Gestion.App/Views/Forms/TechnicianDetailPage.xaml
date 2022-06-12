@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestion.App.Views.Forms.TechnicianDetailPage"
+             xmlns:viewModel="clr-namespace:Gestion.App.ViewsModels.Forms">
+
+    <ContentPage.BindingContext>
+        <viewModel:TechnicianDetailViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="50" VerticalOptions="Center">
+            <Label Text=" TechnicianID"/>
+            <Entry Text="{Binding Technician.TechnicianID}"/>
+
+            <Label Text=" Firts Name"/>
+            <Entry Text="{Binding Technician.FirtsName}"/>
+
+            <Label Text=" Last Name"/>
+            <Entry Text="{Binding Technician.LastName}"/>
+            <Label Text=" Level"/>
+            <Entry Text="{Binding Technician.Level}"/>
+            <Label/>
+            <Label Text="Request" TextColor="Black" HorizontalOptions="Center"/>
+
+            <ListView x:Name="listView"
+                      ItemsSource="{Binding Request}"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshCommand}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Frame BorderColor="Black" CornerRadius="14">
+
+                                <Grid>
+
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"  />
+                                        <ColumnDefinition Width="*" />
+                                        <!--<ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />-->
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding RequestID}"/>
+                                    <Label Grid.Column="1" Text="{Binding EquipoID}" HorizontalTextAlignment="Center"/>
+                                    <!--<Label Grid.Column="1" Text="{Binding Prioridad}" HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Column="1" Text="{Binding Tipo}" HorizontalTextAlignment="Center"/>-->
+
+                                </Grid>
+
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
