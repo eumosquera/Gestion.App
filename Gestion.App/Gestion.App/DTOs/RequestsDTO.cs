@@ -5,19 +5,24 @@ using System.Text;
 
 namespace Gestion.App.DTOs
 {
-    public class RequestDTO
+    public class RequestsDTO
     {
         [JsonProperty("id_solicitud")]
         public int RequestID { get; set; }
+
         [JsonProperty("prioridad")]
-        public string Prioridad { get; set; }
+        public string Priority { get; set; }
+
         [JsonProperty("id_equipo")]
-        public int EquipoID { get; set; }
+        public int ComputerID { get; set; }
+
         [JsonProperty("id_tecnico")]
         public int TechnicianID { get; set; }
+
         [JsonProperty("tipo_solicitud")]
-        public string Tipo { get; set; }
+        public string Type { get; set; }
+
         [JsonProperty("descripcion_solicitud")]
-        public string Descripcion { get; set; }
+        public string Description { get; set; }
     }
 }

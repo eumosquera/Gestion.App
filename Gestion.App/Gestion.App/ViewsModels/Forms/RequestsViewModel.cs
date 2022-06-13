@@ -9,45 +9,34 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Gestion.App.ViewModels;
-using System.Linq;
 
 namespace Gestion.App.ViewsModels.Forms
 {
-    public class TechnicianDetailViewModel : BaseViewModel
+    public class RequestsViewModel : BaseViewModel
     {
         #region Attributes
-
-        private ObservableCollection<RequestsDTO> _solicitud;
+        private ObservableCollection<RequestItemViewModel> _requests;
         private bool _isRefreshing;
-        private TechniciansDTO _technician;
         #endregion
 
         #region Properties
-        public TechniciansDTO Technician
+        public ObservableCollection<RequestItemViewModel> Requests
         {
-            get { return _technician; }
-            set { this.SetValue(ref _technician, value); }
-
+            get { return _requests; }
+            set { this.SetValue(ref _requests, value); }
         }
 
-        public ObservableCollection<RequestsDTO> Request
-        {
-            get { return _solicitud; }
-            set { this.SetValue(ref _solicitud, value); }
-        }
         public bool IsRefreshing
         {
             get { return _isRefreshing; }
             set { this.SetValue(ref _isRefreshing, value); }
         }
-
         #endregion
 
         #region Methods
-
-        async void GetRequest()
+        async void GetRequests()
         {
-            this._isRefreshing = true;
+            this.IsRefreshing = true;
 
             var url = "https://62a2880ecc8c0118ef636563.mockapi.io/solicitud_servicio";
             var result = string.Empty;
@@ -59,33 +48,26 @@ namespace Gestion.App.ViewsModels.Forms
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var request = JsonConvert.DeserializeObject<ObservableCollection<RequestsDTO>>(result);
-                    var requestFilter = request.Where(x => x.TechnicianID == _technician.TechnicianID).ToList();
-                    this.Request = new ObservableCollection<RequestsDTO>(requestFilter);
+                    var requests = JsonConvert.DeserializeObject<ObservableCollection<RequestItemViewModel>>(result);
+                    this.Requests = requests;
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Notify", "Fail", "OK");
-                }
+                    await Application.Current.MainPage.DisplayAlert("Notify", "Fail", "Ok");
 
+                }
             }
             this.IsRefreshing = false;
-
         }
 
-        public TechnicianDetailViewModel(TechniciansDTO technicians)
+        public RequestsViewModel()
         {
-            this.Technician = technicians;
-            this.RefreshCommand = new Command(GetRequest);
+            this.RefreshCommand = new Command(GetRequests);
             this.RefreshCommand.Execute(null);
-
         }
 
-        public TechnicianDetailViewModel()
-        {
-
-        }
-
+        #endregion
+        #region Commands
         public Command RefreshCommand { get; set; }
         #endregion
 

@@ -13,81 +13,76 @@ using System.Linq;
 
 namespace Gestion.App.ViewsModels.Forms
 {
-    public class TechnicianDetailViewModel : BaseViewModel
+    public class RequestDetailViewModel : BaseViewModel
     {
         #region Attributes
-
-        private ObservableCollection<RequestsDTO> _solicitud;
+        private ObservableCollection<ComputersDTO> _computer;
         private bool _isRefreshing;
-        private TechniciansDTO _technician;
+        private RequestsDTO _request;
         #endregion
-
+       
         #region Properties
-        public TechniciansDTO Technician
+        public RequestsDTO Requests
         {
-            get { return _technician; }
-            set { this.SetValue(ref _technician, value); }
+            get { return _request; }
+            set { this.SetValue(ref _request, value); }
 
         }
 
-        public ObservableCollection<RequestsDTO> Request
+        public ObservableCollection<ComputersDTO> Computer
         {
-            get { return _solicitud; }
-            set { this.SetValue(ref _solicitud, value); }
+            get { return _computer; }
+            set { this.SetValue(ref _computer, value); }
         }
         public bool IsRefreshing
         {
             get { return _isRefreshing; }
             set { this.SetValue(ref _isRefreshing, value); }
         }
-
         #endregion
 
         #region Methods
 
-        async void GetRequest()
+        async void GetComputer()
         {
-            this._isRefreshing = true;
+            this.IsRefreshing = true;
 
-            var url = "https://62a2880ecc8c0118ef636563.mockapi.io/solicitud_servicio";
+            var url = "https://62a2880ecc8c0118ef636563.mockapi.io/Equipos";
             var result = string.Empty;
 
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync(url);
+                var response = await client.GetAsync(url);  
                 result = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var request = JsonConvert.DeserializeObject<ObservableCollection<RequestsDTO>>(result);
-                    var requestFilter = request.Where(x => x.TechnicianID == _technician.TechnicianID).ToList();
-                    this.Request = new ObservableCollection<RequestsDTO>(requestFilter);
+                    var computer = JsonConvert.DeserializeObject<ObservableCollection<ComputersDTO>>(result);
+                    var computerFilter = computer.Where(x => x.ComputerID == _request.ComputerID).ToList();
+                    this.Computer = new ObservableCollection<ComputersDTO>(computerFilter);
                 }
                 else
                 {
                     await Application.Current.MainPage.DisplayAlert("Notify", "Fail", "OK");
                 }
-
             }
             this.IsRefreshing = false;
 
         }
 
-        public TechnicianDetailViewModel(TechniciansDTO technicians)
+        public RequestDetailViewModel( RequestsDTO request)
         {
-            this.Technician = technicians;
-            this.RefreshCommand = new Command(GetRequest);
+            this.Requests = request;
+            this.RefreshCommand = new Command(GetComputer);
             this.RefreshCommand.Execute(null);
-
         }
-
-        public TechnicianDetailViewModel()
+        public RequestDetailViewModel()
         {
 
         }
-
         public Command RefreshCommand { get; set; }
         #endregion
+
 
     }
 }

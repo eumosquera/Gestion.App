@@ -46,9 +46,9 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Grid.Column="0" Text="{Binding RequestID}"/>
-                                    <Label Grid.Column="1" Text="{Binding EquipoID}" HorizontalTextAlignment="Center"/>
-                                    <!--<Label Grid.Column="1" Text="{Binding Prioridad}" HorizontalTextAlignment="Center"/>
-                                    <Label Grid.Column="1" Text="{Binding Tipo}" HorizontalTextAlignment="Center"/>-->
+                                    <Label Grid.Column="1" Text="{Binding ComputerID}" HorizontalTextAlignment="Center"/>
+                                    <!--<Label Grid.Column="1" Text="{Binding Priority}" HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Column="1" Text="{Binding Type}" HorizontalTextAlignment="Center"/>-->
 
                                 </Grid>
 
