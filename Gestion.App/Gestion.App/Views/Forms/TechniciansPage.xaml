@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gestion.App.Views.Forms.TechniciansPage"
-             xmlns:viewModel="clr-namespace:Gestion.App.ViewsModels.Forms">
+             xmlns:viewModel="clr-namespace:Gestion.App.ViewsModels.Forms"
+             BackgroundColor="#2196F3">
     <ContentPage.BindingContext>
 
         <viewModel:TechniciansViewModel/>
@@ -11,6 +12,14 @@
 
     <ContentPage.Content>
         <StackLayout Padding="20">
+
+            <Frame CornerRadius="20">
+                <Label Text="PAGINA PRINCIPAL DE TECNICOS"
+                   HorizontalOptions="Center"
+                   Padding="10"
+                   TextColor="Black"/>
+            </Frame>
+
             <ListView x:Name="listView"
                       ItemsSource="{Binding Technicians}"
                       HasUnevenRows="True"
@@ -36,10 +45,12 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label Grid.Column="0" 
-                                           Text="{Binding TechnicianID}"/>
+                                           Text="{Binding TechnicianID}"
+                                           TextColor="Black"/>
                                     <Label Grid.Column="1" 
                                            Text="{Binding FirtsName}" 
-                                           HorizontalTextAlignment="Center"/>
+                                           HorizontalTextAlignment="Center"
+                                           TextColor="Black"/>
                                     <!--<Label Grid.Column="1" 
                                            Text="{Binding LastName}" 
                                            HorizontalTextAlignment="Center"/>
