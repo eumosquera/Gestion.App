@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gestion.App.Views.Forms.Home"           
+             BackgroundColor="#2196F3">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Frame CornerRadius="20">
+                <Label Text="Gestion APP" TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       FontSize="30"
+                       FontAttributes="Bold"/>
+            </Frame>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="20">
+                    <Label Text="Login" TextColor="Black" FontSize="30"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                    <Entry Placeholder="Email" PlaceholderColor="LightGray" BackgroundColor="White" />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand">
+                    <Entry Placeholder="Password" PlaceholderColor="LightGray" BackgroundColor="White"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" Margin="20">
+                    <Button Text="Registrar" TextColor="Blue" BackgroundColor="Transparent" FontSize="12"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Margin="20">
+                    <Button Text="recuperar contraseña" TextColor="Blue" BackgroundColor="Transparent" FontSize="12"/>
+                </Grid>
+                <Label/>
+                <Label/>
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="20">
+                    <Button Text="Tecnicos" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" FontSize="12" CornerRadius="20"/>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="20" >
+                    <Button Text="Solicitudes" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" FontSize="12" CornerRadius="20"/>
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="20">
+                    <Button Text="Equipos" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" FontSize="12" CornerRadius="20"/>
+                </Grid>
+
+
+
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
