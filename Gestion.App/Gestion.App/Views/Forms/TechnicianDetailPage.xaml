@@ -2,64 +2,93 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gestion.App.Views.Forms.TechnicianDetailPage"
-             xmlns:viewModel="clr-namespace:Gestion.App.ViewsModels.Forms">
+             xmlns:viewModel="clr-namespace:Gestion.App.ViewsModels.Forms"
+             BackgroundColor="#2196F3">
 
     <ContentPage.BindingContext>
         <viewModel:TechnicianDetailViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+
+
         <StackLayout Padding="50" VerticalOptions="Center">
-            <Label Text=" TechnicianID"/>
-            <Entry Text="{Binding Technician.TechnicianID}"/>
-
-            <Label Text=" Firts Name"/>
-            <Entry Text="{Binding Technician.FirtsName}"/>
-
-            <Label Text=" Last Name"/>
-            <Entry Text="{Binding Technician.LastName}"/>
-            <Label Text=" Level"/>
-            <Entry Text="{Binding Technician.Level}"/>
-            <Label/>
-            <Label Text="Request" TextColor="Black" HorizontalOptions="Center"/>
-
-            <ListView x:Name="listView"
+            <Frame CornerRadius="20">
+                <Label Text="Detalles de Tecnico" TextColor="Black" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold"/>
+            </Frame>
+            <Label HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="White" Margin="0,40,0,40"/>
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                        <Label Text=" TechnicianID" TextColor="White" FontSize="15" Padding="0,0,0,40"/>
+                        <Entry Text="{Binding Technician.TechnicianID}" TextColor="White" FontSize="15" HorizontalOptions="FillAndExpand" Margin="30,0,0,0" IsReadOnly="True"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Label Text=" Firts Name"  TextColor="White" FontSize="15" Padding="0,0,0,40"/>
+                        <Entry Text="{Binding Technician.FirtsName}" TextColor="White" FontSize="15" HorizontalOptions="FillAndExpand" Margin="30,0,0,0" IsReadOnly="True"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Label Text=" Last Name"  TextColor="White" FontSize="15" Padding="0,0,0,40"/>
+                        <Entry Text="{Binding Technician.LastName}" TextColor="White" FontSize="15" HorizontalOptions="FillAndExpand" Margin="30,0,0,0" IsReadOnly="True"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <Label Text=" Level"  TextColor="White" FontSize="15" Padding="0,0,0,40"/>
+                        <Entry Text="{Binding Technician.Level}" TextColor="White" FontSize="15" HorizontalOptions="FillAndExpand" Margin="30,0,0,0" IsReadOnly="True"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="0">
+                        <Label HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="White" Margin="0,40,0,40"/>
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="0">
+                        <Label HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="White" Margin="0,40,0,40"/>
+                        <Frame CornerRadius="30" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Solicitudes" TextColor="Black" HorizontalOptions="Center" FontSize="18" FontAttributes="Bold"/>
+                        </Frame>
+                    </Grid>
+                    <Grid Grid.Row="6" Grid.Column="0">
+                        <ListView x:Name="listView"
                       ItemsSource="{Binding Request}"
                       HasUnevenRows="True"
                       IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsRefreshing}"
                       RefreshCommand="{Binding RefreshCommand}">
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-
-                        <ViewCell>
-                            <Frame BorderColor="Black" CornerRadius="14">
-
-                                <Grid>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BorderColor="Black" CornerRadius="14">
 
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"  />
-                                        <ColumnDefinition Width="*" />
-                                        <!--<ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />-->
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Grid.Column="0" Text="{Binding RequestID}"/>
-                                    <Label Grid.Column="1" Text="{Binding ComputerID}" HorizontalTextAlignment="Center"/>
-                                    <!--<Label Grid.Column="1" Text="{Binding Priority}" HorizontalTextAlignment="Center"/>
-                                    <Label Grid.Column="1" Text="{Binding Type}" HorizontalTextAlignment="Center"/>-->
-
-                                </Grid>
-
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-
-            </ListView>
-
-
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding RequestID}" TextColor="Black"/>
+                                                <Label Grid.Column="1" Text="{Binding Priority}" TextColor="Black"/>
+                                                <Label Grid.Column="2" Text="{Binding ComputerID}" TextColor="Black"/>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
