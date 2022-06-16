@@ -11,7 +11,7 @@ namespace Gestion.App
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Home());
+            MainPage = new NavigationPage(new RegisterTenchniciansPage());
         }
 
         protected override void OnStart()

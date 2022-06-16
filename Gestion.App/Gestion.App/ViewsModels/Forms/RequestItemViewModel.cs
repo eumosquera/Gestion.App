@@ -12,7 +12,7 @@ namespace Gestion.App.ViewsModels.Forms
         #region Methods
         async void OnItemClicked()
         {
-            await Application.Current.MainPage.DisplayAlert("Notify","$Select {this.RequestID}","Ok");
+            await Application.Current.MainPage.DisplayAlert("Notify", $"Selected {this.Description}", "Ok");
             RequestDetailPage detailPage = new RequestDetailPage();
             detailPage.BindingContext = new RequestDetailViewModel(this);
             await Application.Current.MainPage.Navigation.PushAsync(detailPage);

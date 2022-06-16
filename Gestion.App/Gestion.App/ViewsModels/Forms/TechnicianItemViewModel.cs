@@ -14,7 +14,7 @@ namespace Gestion.App.ViewsModels.Forms
         async void OnItemClicked()
         {
 
-            await Application.Current.MainPage.DisplayAlert("Notify",$"Select {this.FirtsName}", "Ok");
+            await Application.Current.MainPage.DisplayAlert("Notify",$"Selected {this.FirtsName + " " + LastName}", "Ok");
             TechnicianDetailPage detailPage = new TechnicianDetailPage();
             detailPage.BindingContext = new TechnicianDetailViewModel(this);
             await Application.Current.MainPage.Navigation.PushAsync(detailPage);

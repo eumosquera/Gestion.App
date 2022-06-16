@@ -38,10 +38,11 @@
                                     </Grid.GestureRecognizers>
 
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"  />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
-                                        <!--<ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />-->
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        
                                     </Grid.ColumnDefinitions>
 
                                     <Label Grid.Column="0" 
@@ -51,12 +52,15 @@
                                            Text="{Binding FirtsName}" 
                                            HorizontalTextAlignment="Center"
                                            TextColor="Black"/>
-                                    <!--<Label Grid.Column="1" 
-                                           Text="{Binding LastName}" 
+                                    <Label Grid.Column="2" 
+                                           Text="{Binding LastName}"
+                                           TextColor="Black"
                                            HorizontalTextAlignment="Center"/>
-                                    <Label Grid.Column="1" 
+
+                                    <Label Grid.Column="3"
+                                           TextColor="Black"
                                            Text="{Binding Level}" 
-                                           HorizontalTextAlignment="Center"/>-->
+                                           HorizontalTextAlignment="Center"/>
                                     
 
                                 </Grid>

@@ -1,12 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Gestion.App.Views.Forms.RequestDetailPage">
+             x:Class="Gestion.App.Views.Forms.RequestDetailPage"
+             xmlns:viewModel="clr-namespace:Gestion.App.ViewsModels.Forms">
+    <ContentPage.BindingContext>
+        <viewModel:RequestDetailViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout Padding="50" VerticalOptions="Center">
+            <Label Text="RequestID"/>
+            <Entry Text="{Binding Requests.RequestID}"/>
+            <Label Text="Priority"/>
+            <Entry Text="{Binding Requests.Priority}"/>
+
+            <Label Text="ComputerID"/>
+            <Entry Text="{Binding Requests.ComputerID}"/>
+
+            <Label Text="TechnicianID"/>
+            <Entry Text="{Binding Requests.TechnicianID}"/>
+            <Label Text="Type"/>
+            <Entry Text="{Binding Requests.Type}"/>
+            <Label Text=" Description"/>
+            <Entry Text="{Binding Requests.Description}"/>
+            <Label/>
+            <Label Text="Request" TextColor="Black" HorizontalOptions="Center"/>
+
+            <ListView x:Name="listView"
+                      ItemsSource="{Binding Computer}"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Frame BorderColor="Black" CornerRadius="14">
+
+                                <Grid>
+
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"  />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding ComputerID}"/>
+                                    <Label Grid.Column="1" Text="{Binding Brand}" HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Column="1" Text="{Binding Model}" HorizontalTextAlignment="Center"/>
+                                    <Label Grid.Column="2" Text="{Binding Type}" HorizontalTextAlignment="Center"/>
+
+                                </Grid>
+
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
